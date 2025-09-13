@@ -1,34 +1,58 @@
-/*import ProductCard from "./ProductCard.jsx";*/
 import "./App.css";
-import UserAvatar from "./UserAvatar.jsx";
-function App() {
-  /*let person={
-     productName1:"chocolate",
-     productName2:"lappy",
-     price :1000,
-      isAvailable : true,
-      Available: false
-  }*/
-  let person1={
-    personName:"Bhavana",
-    Course:"B.tech Cse",
-    RollNo:"23VV1A0502",
-    BloodGroup:"B+ve",
-    DOB:"15/08/2005"
+import {useState} from "react";
+function App(){
+  const [count,setCount]=useState(0)
+  /*const [email,setEmail]=useState("")
+  const [password,setPassword]=useState("")*/
+  const [formData,setFormData]=useState({
+    email:"",
+    password:""
+  })
+  const handleEmail=(event)=>{
+    setEmail(event.target.value)
+
   }
-  
- 
+  const handlePassword=(event)=>{
+    setPassword(event.target.value)
 
-  return (
-    /*<div className="maincontainer">
-      <ProductCard product={person.productName1} price={person.price} isAvailable={person.isAvailable}/>
-      <ProductCard product={person.productName2} price={person.price} isAvailable={person.Available}/>
+  }
+  const handleIncrement=()=>{
+    //setCount()
+    setCount((prevCount)=>prevCount+1)
+    console.log(count)
+  }
 
-    </div>*/
-    <div className="maincontainer">
-      <UserAvatar personName={person1.personName} Course={person1.Course} RollNo={person1.RollNo} BloodGroup={person1.BloodGroup} DOB={person1.DOB}/>
+  const handleClick=(name)=>{
+    //alert("hello "+name)
+    alert(`hello ${name}`)
+  }
+  const handleChange=(event)=>{
+    //console.log(event.target.name)
+    //console.log(event.target.value)
+    setFormData(
+      {
+        ...formData,
+        [event.target.name]:event.target.value
+
+      }
+    )
+  }
+  const handleSubmit=(event)=>{
+    event.preventDefault()
+    alert(`Email: " ${formData.email} \n Password: ${formData.password} \n submiited`)
+  }
+  return(
+    <div>
+      <p>{count}</p>
+      <button onClick={handleIncrement}>Increment</button>
+      <form onSubmit={handleSubmit}>
+      <p>button</p>
+      <input type="text" name="email" placeholder="type" onChange={handleChange}></input><br/>
+      <input type="password" name="Password" placeholder="enter" onChange={handleChange}></input><br/>
+      <button type="submit">Login</button>
+      
+</form>
     </div>
   )
 }
-
-export default App
+export default App;
