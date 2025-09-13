@@ -1,0 +1,16 @@
+
+
+
+
+
+
+img {
+    border-radius: 5%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+}
